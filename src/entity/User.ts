@@ -1,5 +1,7 @@
-import {Entity, PrimaryGeneratedColumn, Unique, Column, CreateDateColumn} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Unique, Column, OneToMany} from "typeorm";
 import { MinLength, IsNotEmpty } from 'class-validator';
+import * as bcrypt from 'bcryptjs';
+import {Post} from "./Post";
 
 @Entity()
 @Unique(['username'])
@@ -23,8 +25,6 @@ export class User {
     @Column()
     @IsNotEmpty()
     age:number;
-
-    
 
    
 }
