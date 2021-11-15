@@ -9,12 +9,10 @@ export class Post {
     id: number;
 
     @Column()
-    @MinLength(20)
     @IsNotEmpty()
     title: string;
 
     @Column()
-    @MinLength(50)
     @IsNotEmpty()
     description: string;
 

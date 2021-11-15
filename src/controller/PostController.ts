@@ -1,7 +1,7 @@
 import {getRepository} from "typeorm";
 import {Request, Response} from "express";
 import {Post} from "../entity/Post";
-
+import { validate } from "class-validator";
 
 export class PostController {
 
@@ -27,8 +27,39 @@ export class PostController {
         }
     }
 
+    static newPost = async (req: Request, res: Response) => {
+        const { title, description, publicDate } = req.body;
+        const post = new Post();
 
-    
+        post.title = title;
+        post.description = description;
+        post.publicDate = publicDate;
+        
+        console.log(post.publicDate);
+
+
+        // Validate
+        const errors = await validate(post);
+        if (errors.length > 0) {
+            return res.status(400).json(errors);
+        }
+
+      
+            const userRepository = getRepository(Post)
+            try {
+                
+                await userRepository.save(post);
+
+            } catch (e) {
+                return res.status(409).json({ message: 'Post already exist'});
+            }
+            // All ok
+            res.send('Post created');
+     
+
+
+    }
+
 
 
 
