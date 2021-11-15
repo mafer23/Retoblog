@@ -1,7 +1,7 @@
 import {getRepository} from "typeorm";
 import {Request, Response} from "express";
 import {User} from "../entity/User";
-import { validate } from "class-validator";
+import { isNotEmpty, validate } from "class-validator";
 
 export class UserController {
 
@@ -42,7 +42,7 @@ export class UserController {
             return res.status(400).json(errors);
         }
 
-        if(user.age >= 18){
+        if(user.age >= 18  ){
             const userRepository = getRepository(User)
             try {
                 
@@ -55,7 +55,7 @@ export class UserController {
             res.send('User created');
         } else{
 
-            res.send('Not user created for age ')
+            res.send('You cannot register you must be of legal age ')
         }
 
 

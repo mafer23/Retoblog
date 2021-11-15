@@ -15,7 +15,7 @@ class AuthController {
         let user: User;
 
         try {
-            user = await userRepository.findOneOrFail({});
+            user = await userRepository.findOneOrFail({ where:{username} });
         } catch (e) {
            return res.status(400).json({message:'Username or password incorrect'})
         }
