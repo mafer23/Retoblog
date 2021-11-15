@@ -4,6 +4,7 @@ import * as express from "express";
 import {Request, Response} from "express";
 import * as cors from 'cors';
 import helmet = require("helmet");
+import routes from './routes';
 const PORT = process.env.PORT || 3000;
 
 
@@ -18,6 +19,9 @@ createConnection().then(async connection => {
     app.use(helmet());
 
     app.use(express.json());
+
+    // Routes
+    app.use('/', routes);
 
     
     // start express server

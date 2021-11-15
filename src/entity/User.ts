@@ -1,18 +1,30 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Unique, Column, CreateDateColumn} from "typeorm";
+import { MinLength, IsNotEmpty } from 'class-validator';
 
 @Entity()
+@Unique(['username'])
 export class User {
 
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    firstName: string;
+    @MinLength(20)
+    username: string;
 
     @Column()
-    lastName: string;
+    @MinLength(6)
+    password: string;
 
     @Column()
-    age: number;
+    @IsNotEmpty()
+    role: string;
 
+    @Column()
+    @IsNotEmpty()
+    age:number;
+
+    
+
+   
 }

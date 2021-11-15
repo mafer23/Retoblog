@@ -1,5 +1,5 @@
 import {getRepository} from "typeorm";
-import {NextFunction, Request, Response} from "express";
+import {Request, Response} from "express";
 import {User} from "../entity/User";
 import { validate } from "class-validator";
 
@@ -53,6 +53,9 @@ export class UserController {
             }
             // All ok
             res.send('User created');
+        } else{
+
+            res.send('Not user created for age ')
         }
 
 
@@ -60,3 +63,5 @@ export class UserController {
 
    
 }
+
+export default UserController
