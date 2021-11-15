@@ -20,7 +20,8 @@ export class Post {
     publicDate: Date;
 
 
-    
+    @ManyToOne(() => User, user => user.id)
+    user: User;
 
    
 

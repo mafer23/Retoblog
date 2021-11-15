@@ -28,14 +28,15 @@ export class PostController {
     }
 
     static newPost = async (req: Request, res: Response) => {
-        const { title, description, publicDate } = req.body;
+        const { title, description, publicDate, user } = req.body;
         const post = new Post();
 
         post.title = title;
         post.description = description;
         post.publicDate = publicDate;
+        post.user = user;
         
-        console.log(post.publicDate);
+       
 
 
         // Validate

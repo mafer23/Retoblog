@@ -35,6 +35,7 @@ export class UserController {
         user.password = password;
         user.role = role;
         user.age = age;
+        
 
         // Validate
         const errors = await validate(user);
