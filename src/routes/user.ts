@@ -12,10 +12,5 @@ router.get('/:id', UserController.getById);
 // Create a new user
 router.post('/', UserController.newUser);
 
-// Edit user 
-router.patch('/:id', UserController.editUser);
-
-// Delete 
-router.delete('/:id', UserController.deleteUser);
 
 export default router;

@@ -49,8 +49,10 @@ export class UserController {
                 await userRepository.save(user);
 
             } catch (e) {
-                return res.status
+                return res.status(409).json({ message: 'Username already exist'});
             }
+            // All ok
+            res.send('User created');
         }
 
 
